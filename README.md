@@ -1,45 +1,76 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+````
+yarn add -D eslint prettier @typescript-eslint/{eslint-plugin,parser} eslint-config-{airbnb,prettier} eslint-plugin-{import,jest,jsx-a11y,prettier,react,react-hooks}
+````
 
-## Available Scripts
+ .eslintrc
+````
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "."
+  },
+  "env": {
+    "browser": true,
+    "jest/globals": true
+  },
+  "plugins": ["@typescript-eslint", "react-hooks", "jest", "prettier"],
+  "extends": [
+    "airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/typescript",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint"
 
-In the project directory, you can run:
+  ],
+  "rules": {
+    /**
+     * @description rules of eslint official
+     */
+    /**
+     * @bug https://github.com/benmosher/eslint-plugin-import/issues/1282
+     * "import/named" temporary disable.
+     */
+    "import/named": "off",
+    /**
+     * @bug?
+     * "import/export" temporary disable.
+     */
+    "import/export": "off",
+    "import/prefer-default-export": "off", // Allow single Named-export
+    "no-unused-expressions": ["warn", {
+      "allowShortCircuit": true,
+      "allowTernary": true
+    }], // https://eslint.org/docs/rules/no-unused-expressions
 
-### `npm start`
+    /**
+     * @description rules of @typescript-eslint
+     */
+    "@typescript-eslint/prefer-interface": "off", // also want to use "type"
+    "@typescript-eslint/explicit-function-return-type": "off", // annoying to force return type
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    /**
+     * @description rules of eslint-plugin-react
+     */
+    "react/jsx-filename-extension": ["warn", {
+      "extensions": [".jsx", ".tsx"]
+    }], // also want to use with ".tsx"
+    "react/prop-types": "off", // Is this incompatible with TS props type?
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+    /**
+     * @description rules of eslint-plugin-react-hooks
+     */
+    "react-hooks/rules-of-hooks": "error",
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-# eslint-typescript-rules
+    /**
+     * @description rules of eslint-plugin-prettier
+     */
+    "prettier/prettier": [
+      "error", {
+        "singleQuote": true,
+        "semi": false
+      }
+    ]
+  }
+}
+````
