@@ -83,3 +83,4 @@ yarn add eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser eslin
   }
 }
 ```
+resources : https://www.arden.nl/setting-up-a-gatsby-js-starter-with-type-script-es-lint-prettier-and-pre-commit-hooks
