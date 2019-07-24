@@ -47,7 +47,7 @@ yarn add -D eslint prettier @typescript-eslint/{eslint-plugin,parser} eslint-con
 
 ## A better approach
 ```
-yarn add eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-prettier eslint-plugin-react --dev
+yarn add eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-prettier eslint-plugin-react eslint-plugin-jest prettier --dev
 ```
 
 .eslintrc
